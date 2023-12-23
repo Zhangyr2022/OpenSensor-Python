@@ -5,13 +5,18 @@ from dotenv import load_dotenv
 from backend import Backend
 from rich.console import Console
 from rich.logging import RichHandler
+import time
 
 load_dotenv()
 
-DEFAULT_FILTER_NAME = "NoFilter"
+DEFAULT_FILTER_NAME = "KalmanFilter"
 DEFAULT_LOGGING_LEVEL = "INFO"
 DEFAULT_SERVER_PORT = 39999
 SERILOG_TEMPLATE = "%(message)s"
+STATE_DIMENSION = 3
+BUFFER_SIZE = 5
+REAL_TIME_PLOT = False
+CSV_PATH = f"./data/{time.strftime('%Y%m%d%H%M%S', time.localtime())}.csv"
 
 
 async def main_async():
@@ -21,7 +26,14 @@ async def main_async():
 
     setup_logging(logging_level_string)
 
-    backend = Backend(server_port, filter_name)
+    backend = Backend(
+        server_port,
+        filter_name,
+        STATE_DIMENSION,
+        BUFFER_SIZE,
+        real_time_plot=REAL_TIME_PLOT,
+        csv_path=CSV_PATH,
+    )
 
     # Use asyncio.create_task to start the backend asynchronously
     asyncio.create_task(backend.start())

@@ -18,8 +18,8 @@ class KalmanFilter:
         """
         self.F = F if F is not None else np.eye(len(initialX))
         self.H = H if H is not None else np.eye(len(initialX))
-        self.Q = Q if Q is not None else np.eye(len(initialX))
-        self.R = R if R is not None else np.eye(len(initialX))
+        self.Q = Q if Q is not None else np.eye(len(initialX)) * 5
+        self.R = R if R is not None else np.eye(len(initialX)) * 3
 
         self.X = initialX
         self.P = initialP

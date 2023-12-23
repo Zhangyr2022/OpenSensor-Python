@@ -36,7 +36,7 @@ class Server:
 
         try:
             self._ws_server = await websockets.serve(
-                self._on_connect, host="183.172.228.208", port=self._port
+                self._on_connect, host="183.172.226.9", port=self._port
             )
             self._is_running = True
             self._logger.info("Started.")

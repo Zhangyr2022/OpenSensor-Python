@@ -34,11 +34,21 @@ class Accelerometer:
 
 
 @dataclass
+class Gravity:
+    """Gravity data class."""
+
+    x: float = 0.0
+    y: float = 0.0
+    z: float = 0.0
+
+
+@dataclass
 class SensorMessage(Message):
     """Sensor message class."""
 
     message_type: str = "SENSOR"
     gyroscope: Gyroscope = Gyroscope()
     accelerometer: Accelerometer = Accelerometer()
+    gravity: Gravity = Gravity()
     timestamp: int = 0
     update_rate: float = 0.0
