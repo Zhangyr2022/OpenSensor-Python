@@ -82,6 +82,7 @@ class Server:
         try:
             async for message in websocket:
                 await self._handle_message(message)
+                # self._logger.info("Received message: %s", message)
         finally:
             await self._on_disconnect(connection_id)
 

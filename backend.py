@@ -109,7 +109,7 @@ class Backend:
         # self._removed_displacement_group_num = 0
         # self._removed_a_group_num = 0
         self._record_cnt = 0
-        self.MAX_RECORD = 1000
+        self.MAX_RECORD = 10000
 
         self._grivity_converter = None
 
@@ -143,7 +143,6 @@ class Backend:
         """Handles the server's after message receive event."""
 
         if self._real_time_plot:
-            # self._logger.info("Received message: %s", e)
 
             # 解析消息，获取陀螺仪数据
             gyroscope_data = Gyroscope(**e.gyroscope)
